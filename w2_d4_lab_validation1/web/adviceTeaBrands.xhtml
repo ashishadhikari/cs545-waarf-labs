@@ -5,18 +5,40 @@ and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>TODO supply a title</title>
     </head>
     <body>
-        <h:dataTable value="#{tea.currentColor.brands}" var="brand">
-            <h:column>
-                <h:outputText value="#{brand.description}" />
-            </h:column>
-            
+        <h:form>
+            <h:dataTable value="#{tea.currentColor.brands}" var="brand">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Check to order" style="font-weight: bold"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{brand.beingOrdered}" onclick="submit()" />
+                </h:column>
+                <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Tea Brand" style="font-weight: bold"/>
+                </f:facet>
+                    <h:outputText value="#{brand.name}" />
+                </h:column>
+                <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Quantity ordered" style="font-weight: bold"/>
+                </f:facet>
+                    <h:inputText id="quantity" value="#{brand.quantity}" rendered="#{brand.beingOrdered}" size="10" validatorMessage="Quantity should be between 0 and 1,000." >
+                        <f:validateLongRange minimum="0" maximum="1000"/>
+                    </h:inputText>
+                    <h:message for="quantity" showSummary="true" showDetail="false" />
+                    <h:outputText value="#{brand.quantity}" rendered="#{not brand.beingOrdered}"/>
+                </h:column>
 
-        </h:dataTable>
+            </h:dataTable>
+            <h:commandButton value="Order" action="#{tea.currentColor.save}" />
+        </h:form>
     </body>
 </html>

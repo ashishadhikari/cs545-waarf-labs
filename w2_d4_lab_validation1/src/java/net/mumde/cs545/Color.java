@@ -92,7 +92,20 @@ public class Color implements Serializable {
         return brands;
     }
 
+    public String save() {
+        for (Brand b : brands) {
+            b.setBeingOrdered(false);
+        }
+        return "orderFinalized?faces-redirect=true";
+    }
 
+    public double getTotal() {
+        double total = 0;
+        for (Brand b : brands) {
+            total += b.getTotal();
+        }
+        return total;
+    }
 
 //    public String doDescription() {
 ////        setCurrentBrand();
