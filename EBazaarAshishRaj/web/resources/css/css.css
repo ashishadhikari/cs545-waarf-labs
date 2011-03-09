@@ -1,0 +1,85 @@
+body{
+    background-color: #ffffff;
+}
+#wrapper{
+    margin: auto;
+    width:800px;
+    background-color: #cccccc;
+}
+#content{
+    display: block;
+    float: left;
+    width:665px;
+    overflow: hidden;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 5px ;
+
+   padding: 5px;
+   border: thin solid lightGray;
+   background: #fefeef;
+   min-height: 440px;
+   height: auto;
+   
+}
+#sidebarLeft{
+    display: block;
+    float: left;
+   border: thin solid lightGray;
+   padding: 5px;
+   width: 100px;
+   background: #eeeeee;
+}
+#heading {
+   padding: 20px;
+   height: 30px;
+   margin-bottom: 10px;
+   background: #dddddd;
+   border: 1px solid darkGray;
+}
+
+#sidebarLeft99 {
+   border: thin solid lightGray;
+   padding: 5px;
+   width: 200px;
+   background: #eeeeee;
+}
+
+#contentmmm {
+   padding: 5px;
+   border: thin solid lightGray;
+   background: #fefeef;
+   position: absolute;
+   right: 8px;
+   left: 230px;
+   height: 400px;
+   top: 90px;
+}
+
+.header {
+   font-size: 1.4em;
+   font-style: italic;
+   font-family: Palatino;
+   text-align: center;
+}
+
+.teavanaImage {
+   padding: 5px;
+   text-align: center;
+}
+
+.teavanaImageSelected {
+   padding: 5px;
+   text-align: center;
+   background: #fefeef;
+   border: thin solid lightGray;
+}
+
+.welcome {
+   font-style: italic;
+   font-family: Palatino;
+}
+
+.welcomeImage {
+   margin-top: 10px;
+   text-align: center;
+}
