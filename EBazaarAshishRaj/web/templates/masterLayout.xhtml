@@ -28,6 +28,12 @@
             <div id="content">
                 <ui:insert name="content"/>
             </div>
+
+            <div id="footer">
+                <ui:insert name="sidebarLeft">
+                    <ui:include src="/sections/ebazzar/footer.xhtml"/>
+                </ui:insert>
+            </div>
             <ui:debug/>
         </div>
     </h:body>

@@ -53,10 +53,10 @@ and open the template in the editor.
         <h:outputText style="font-weight: bold" value="Your total billed amount is "/>
         <h:outputText style="font-weight: bold" value="#{browseSelectPCB.shoppingCart.cartCost}"/>
         <h:form>
-            <h:commandButton value="Checkout"/>
+            <h:commandButton value="Checkout" action="#{browseSelectPCB.checkOut}"/>
             <h:commandButton value="Cont. Shopping" action="#{browseSelectPCB.browseCatalog}"/>
             <h:commandButton value="Save Cart"/>
-            <h:commandButton value="Exit EBazaar"/>
+<!--            <h:commandButton value="Exit EBazaar"/>-->
         </h:form>
             </ui:define>
         </ui:composition>
