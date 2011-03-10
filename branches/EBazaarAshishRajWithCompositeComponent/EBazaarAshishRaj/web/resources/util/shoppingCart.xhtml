@@ -11,9 +11,13 @@ and open the template in the editor.
 
     <composite:interface>
         <composite:attribute name="cart" required="true"/>
+        <composite:attribute name="heading"/>
+        <composite:attribute name="footer"/>
+
     </composite:interface>
 
     <composite:implementation>
+        <p><h:outputText value="#{cc.attrs.heading}" style="font-weight: bold" /></p>
         <h:dataTable value="#{cc.attrs.cart.cartItems}" var="item">
             <h:column>
                 <f:facet name="header">
@@ -40,6 +44,6 @@ and open the template in the editor.
                 <h:outputText value="#{item.itemCost}"/>
             </h:column>
         </h:dataTable>
-
+        <p><h:outputText value="#{cc.attrs.footer}" style="font-style: italic" /></p>
     </composite:implementation>
 </html>
