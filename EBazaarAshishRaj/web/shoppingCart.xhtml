@@ -16,12 +16,18 @@ and open the template in the editor.
             <ui:define name="windowTitle"/>
             <ui:define name="content">
                 <h1><h:outputText value="EBazaar -- Your shopping cart" /></h1>
-                <util:shoppingCart cart="#{browseSelectPCB.shoppingCart}"/>
-                <h:outputText style="font-weight: bold" value="Your total billed amount is "/>
-                <h:outputText style="font-weight: bold" value="#{browseSelectPCB.shoppingCart.cartCost}"/>
+                <util:shoppingCart cart="#{browseSelectPCB.shoppingCart}"
+                                   heading="This is the heading for the cart."
+                                   footer="This is the footer for the cart."/>
+                <h:outputText style="font-weight: bold"
+                              value="Your total billed amount is "/>
+                <h:outputText style="font-weight: bold"
+                              value="#{browseSelectPCB.shoppingCart.cartCost}"/>
                 <h:form>
-                    <h:commandButton value="Checkout" action="#{browseSelectPCB.checkOut}"/>
-                    <h:commandButton value="Cont. Shopping" action="#{browseSelectPCB.browseCatalog}"/>
+                    <h:commandButton value="Checkout"
+                                     action="#{browseSelectPCB.checkOut}"/>
+                    <h:commandButton value="Cont. Shopping"
+                                     action="#{browseSelectPCB.browseCatalog}"/>
                     <h:commandButton value="Save Cart"/>
                 </h:form>
             </ui:define>
