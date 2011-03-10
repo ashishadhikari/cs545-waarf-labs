@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <composite:interface>
+        <composite:attribute name="cart" required="true"/>
+    </composite:interface>
+
+    <composite:implementation>
+        <h:dataTable value="#{cc.attrs.cart.cartItems}" var="item">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText style="font-weight: bold" value="Item"/>
+                </f:facet>
+                <h:outputText value="#{item.cartProduct.prodName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText style="font-weight: bold" value="Quantity"/>
+                </f:facet>
+                <h:outputText value="#{item.quantity}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText style="font-weight: bold" value="Unit Price"/>
+                </f:facet>
+                <h:outputText value="#{item.cartProduct.price}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText style="font-weight: bold" value="Total Price"/>
+                </f:facet>
+                <h:outputText value="#{item.itemCost}"/>
+            </h:column>
+        </h:dataTable>
+
+    </composite:implementation>
+</html>
