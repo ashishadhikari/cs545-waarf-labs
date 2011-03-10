@@ -13,13 +13,25 @@ and open the template in the editor.
         <composite:attribute name="cart" required="true"/>
         <composite:attribute name="header"/>
         <composite:attribute name="footer"/>
-        
+
 
     </composite:interface>
 
     <composite:implementation>
+        <style type="text/css">
+            .rowOdd {
+                background: blue;
+            }
+            .rowEven {
+                background: lightblue;
+            }
+            .table {
+                background: lightgray;
+            }
+        </style>
         <p><h:outputText value="#{cc.attrs.header}" style="font-weight: bold" /></p>
-        <h:dataTable value="#{cc.attrs.cart.cartItems}" var="item">
+        <h:dataTable value="#{cc.attrs.cart.cartItems}" var="item" rowClasses="rowOdd, rowEven"
+                     styleClass="table">
             <h:column>
                 <f:facet name="header">
                     <h:outputText style="font-weight: bold" value="Item"/>
