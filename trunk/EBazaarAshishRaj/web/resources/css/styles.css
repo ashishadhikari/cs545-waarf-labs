@@ -28,7 +28,7 @@ select,input{
     padding: 30px 20px 60px 20px;
 }
 span{
-    padding: 20px;
+    xpadding: 20px;
     diplay:block;
     clear: both;
 }
@@ -59,7 +59,7 @@ form p{
 #content{
     display: block;
     float: left;
-    width:665px;
+    width:565px;
     overflow: hidden;
     margin: 0px 0px 0px 10px;
     padding: 0px 0px 0px 5px ;
@@ -76,12 +76,12 @@ form p{
     float: left;
    border: thin solid lightGray;
    padding: 5px;
-   width: 100px;
+   width: 200px;
    background: #eeeeee;
 }
 #heading {
-   padding: 20px;
-   height: 30px;
+   xpadding: 20px;
+   height: 130px;
    margin-bottom: 10px;
    background: #dddddd;
    border: 1px solid darkGray;
@@ -110,6 +110,7 @@ form p{
    font-style: italic;
    font-family: Palatino;
    text-align: center;
+   
 }
 
 .teavanaImage {
