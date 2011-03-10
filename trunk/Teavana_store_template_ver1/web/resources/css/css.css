@@ -1,0 +1,31 @@
+body{
+    background-color: #ffffff;
+}
+#wrapper{
+    margin: auto;
+    width:800px;
+    background-color: #cccccc;
+}
+#content{
+    display: block;
+    float: left;
+    width:665px;
+    overflow: hidden;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 5px ;
+
+   padding: 5px;
+   border: thin solid lightGray;
+   background: #fefeef;
+   min-height: 440px;
+   height: auto;
+   
+}
+#sidebarLeft{
+    display: block;
+    float: left;
+   border: thin solid lightGray;
+   padding: 5px;
+   width: 100px;
+   background: #eeeeee;
+}
