@@ -19,7 +19,11 @@ import business.subsystemExternalInterfaces.ShoppingCartLineItem;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Named
 @SessionScoped
@@ -106,6 +110,14 @@ public class BrowseSelectPCB implements Serializable {
 
     public ShoppingCart getShoppingCart() {
         return bsController.getShoppingCart();
+    }
+
+    public String checkOut(){
+        ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext();
+       // HttpServletResponse response = (HttpServletResponse)ectx.getResponse();
+        HttpSession session = (HttpSession)ectx.getSession(false);
+        session.invalidate();
+        return "congras?faces-redirect=true";
     }
 
 }
