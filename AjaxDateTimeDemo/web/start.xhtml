@@ -14,6 +14,12 @@ and open the template in the editor.
       <script type="text/javascript">       //  language="Javascript1.1"
                 <!--
                 var xhr;
+                var ajaxType = false;
+
+                function changeAjaxType() {
+                    var type = window.document.getElementById("ajaxType");
+                    ajaxType = type;
+                }
 
                 function showDateAndTime()
                 {
@@ -25,7 +31,7 @@ and open the template in the editor.
                 {
                    initXHR();
                    xhr.onreadystatechange = handler; // set callback function
-                   xhr.open("POST", url, true); // open asynchronous GET request
+                   xhr.open("POST", url, ajaxType); // open asynchronous GET request
                    xhr.send(null); // send the request without params
                 }
 
@@ -74,7 +80,9 @@ and open the template in the editor.
         <h:commandButton type='submit' value='Submit' styleClass='button' action='#{pb.display}'/><br/>
         <input type="button" value="Show Date and Time" onclick="showDateAndTime();" class="button"/>
       </h:form>
-
+          <h:selectBooleanCheckbox id="ajaxType"
+                                   value="false" onclick="changeAjaxType()" />
+          Asynchronous
       <div id="dateDIV" class="dateDiv"/>
     </h:body>
   </f:view>
