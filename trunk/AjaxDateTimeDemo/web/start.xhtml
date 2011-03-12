@@ -7,83 +7,102 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
-  <f:view>
-    <h:head>
-      <title><h:outputText value="Basic Ajax"/></title>
-      <h:outputStylesheet library="css" name="styles.css" />
-      <script type="text/javascript">       //  language="Javascript1.1"
-                <!--
-                var xhr;
-                var ajaxType = false;
+    <f:view>
+        <h:head>
+            <title><h:outputText value="Basic Ajax"/></title>
+            <h:outputStylesheet library="css" name="styles.css" />
+            <script type="text/javascript">       //  language="Javascript1.1"
+                      <!--
+                      var xhr;
+                      var ajaxType = true;
+                      var buttonPressed;
 
-                function changeAjaxType() {
-                    var type = window.document.getElementById("ajaxType");
-                    ajaxType = type;
-                }
-
-                function showDateAndTime()
-                {
-                    sendRequest("dateAndTime.ajax", // the URL
-                                processAjaxCall);   // the callback function
-                }
-
-                function sendRequest(url, handler)
-                {
-                   initXHR();
-                   xhr.onreadystatechange = handler; // set callback function
-                   xhr.open("POST", url, ajaxType); // open asynchronous GET request
-                   xhr.send(null); // send the request without params
-                }
-
-                function initXHR()
-                {
-                   if(window.XMLHttpRequest) {
-                      xhr = new XMLHttpRequest();
-                   }
-                   else if(window.ActiveXObject) {
-                      xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                   }
-                }
-
-                function processAjaxCall()
-                {
-                   if(xhr.readyState == 4)
-                   {  // if the request is finished...
-                      if(xhr.status == 200) // ...and everything's okay
-                      {
-                         // Get the dateDiv DIV and configure it
-                         // with the response text
-                        var dateDiv = window.document.getElementById("dateDIV");
-                        dateDiv.innerHTML = xhr.responseText;
+                      function changeAjaxType() {
+                          var type = window.document.getElementById("ajaxType");
+                          ajaxType = type.checked;
                       }
-                   }
-                }
-               -->
-      </script>
-    </h:head>
 
-      <h:body style='background-color:blue'>
-      <div class="banner">
-        <h:outputText value="Basic Ajax with a servlet"
-                      styleClass="bannerText"/>
-      </div>
+                      function showDateAndTime()
+                      {
+                          buttonPressed = "dateAndTime";
+                          sendRequest("dateAndTime.ajax", // the URL
+                                      processAjaxCall,   // the callback function
+                                      "?q=dateAndTime");   // parameter to send
+                      }
 
-      <h:form id="form">
-        <h:panelGrid columns='2'>
-          <h:outputText value='first'/>
-          <h:inputText id='txtFirst' value="#{pb.firstName}" />
-          <h:outputText value='last'/>
-          <h:inputText id='txtLast' value="#{pb.lastName}" />
-        </h:panelGrid>
-        <h:outputText value='#{pb.fullName}'/><br/>
+                      function showTemperature()
+                      {
+                          buttonPressed = "temperature";
+                          sendRequest("dateAndTime.ajax", // the URL
+                                      processAjaxCall,   // parameter to send
+                                      "?q=temperature");
+                      }
 
-        <h:commandButton type='submit' value='Submit' styleClass='button' action='#{pb.display}'/><br/>
-        <input type="button" value="Show Date and Time" onclick="showDateAndTime();" class="button"/>
-      </h:form>
-          <h:selectBooleanCheckbox id="ajaxType"
-                                   value="false" onclick="changeAjaxType()" />
-          Asynchronous
-      <div id="dateDIV" class="dateDiv"/>
-    </h:body>
-  </f:view>
+                      function sendRequest(url, handler, data)
+                      {
+                         initXHR();
+                         xhr.onreadystatechange = handler; // set callback function
+                         xhr.open("POST", url + data, ajaxType); // open asynchronous GET request
+                         xhr.send(null); // send the request with data param
+                      }
+
+                      function initXHR()
+                      {
+                         if(window.XMLHttpRequest) {
+                            xhr = new XMLHttpRequest();
+                         }
+                         else if(window.ActiveXObject) {
+                            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                         }
+                      }
+
+                      function processAjaxCall()
+                      {
+                         if(xhr.readyState == 4)
+                         {  // if the request is finished...
+                            if(xhr.status == 200) // ...and everything's okay
+                            {
+                               // Get the dateDiv DIV and configure it
+                               // with the response text
+                              if (buttonPressed == "dateAndTime") {
+                                    var dateDiv = window.document.getElementById("dateDIV");
+                                    dateDiv.innerHTML = xhr.responseText;
+                              } else if (buttonPressed == "temperature") {
+                                    var tempDiv = window.document.getElementById("tempDIV");
+                                    tempDiv.innerHTML = xhr.responseText;
+                              }
+                        
+                            }
+                         }
+                      }
+                     -->
+            </script>
+        </h:head>
+
+        <h:body style='background-color:blue'>
+            <div class="banner">
+                <h:outputText value="Basic Ajax with a servlet"
+                              styleClass="bannerText"/>
+            </div>
+
+            <h:form id="form">
+                <h:panelGrid columns='2'>
+                    <h:outputText value='first'/>
+                    <h:inputText id='txtFirst' value="#{pb.firstName}" />
+                    <h:outputText value='last'/>
+                    <h:inputText id='txtLast' value="#{pb.lastName}" />
+                </h:panelGrid>
+                <h:outputText value='#{pb.fullName}'/><br/>
+
+                <h:commandButton type='submit' value='Submit' styleClass='button' action='#{pb.display}'/><br/>
+                <input type="button" value="Show Date and Time" onclick="showDateAndTime();" class="button"/>
+                <input type="button" value="Show Temperature" onclick="showTemperature();" class="button"/>
+            </h:form>
+            <h:selectBooleanCheckbox id="ajaxType"
+                                     value="true" onclick="changeAjaxType();" />
+            Asynchronous
+            <div id="dateDIV" class="dateDiv" />
+            <div id="tempDIV" class="dateDiv" />
+        </h:body>
+    </f:view>
 </html>

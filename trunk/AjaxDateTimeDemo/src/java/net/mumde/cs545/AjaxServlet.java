@@ -6,6 +6,7 @@
 package net.mumde.cs545;
 
 import java.io.IOException;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,11 +42,17 @@ public class AjaxServlet extends HttpServlet {
         Thread.sleep(5000);
     }
     catch (InterruptedException e) {
-        
+
     }
     response.setContentType("text/plain");
     response.setHeader("Cache-Control", "no-cache");
     response.setStatus(HttpServletResponse.SC_OK);
-    response.getWriter().write(((new java.util.Date()).toString()));
+    String q = request.getParameter("q");
+    if ("dateAndTime".equals(q)) {
+        response.getWriter().write(((new java.util.Date()).toString()));
+
+    } else if ("temperature".equals(q)) {
+        response.getWriter().write("Current temp is " + new Random().nextInt(10));
+    }
   }
 }
