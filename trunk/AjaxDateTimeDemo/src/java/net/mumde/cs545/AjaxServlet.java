@@ -37,6 +37,12 @@ public class AjaxServlet extends HttpServlet {
     // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     // xhreq.send("figure1=5&figure2=6"); -- except use appropriate name/value pairs
 
+    try {
+        Thread.sleep(5000);
+    }
+    catch (InterruptedException e) {
+        
+    }
     response.setContentType("text/plain");
     response.setHeader("Cache-Control", "no-cache");
     response.setStatus(HttpServletResponse.SC_OK);
